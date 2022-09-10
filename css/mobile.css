@@ -1,0 +1,32 @@
+ @media (max-width: 768px) { 
+    .text-nar {
+        display: none;
+    }
+    .container-nav {
+        display: block;
+        border:none;
+    }
+    .navbar {
+        text-align: left;
+        padding: 10px;
+        height: auto;
+        border:none;
+    }
+    
+    #personal-info {
+        padding-right: 40px;
+        font-size: 16px;
+    }
+    .col-md-6 {
+        border: 1px solid rgb(150, 139, 139);
+    }  
+    .job-box-grid {
+        border: none;
+    }    
+    #footer a:link {
+        margin-right: 10px;    
+    }
+    .row {
+        font-size: 12px;
+    }
+}
