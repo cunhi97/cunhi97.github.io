@@ -12,7 +12,7 @@ const breedInput = document.getElementById("input-breed");
 const vaccinatedInput = document.getElementById("input-vaccinated");
 const dewormedInput = document.getElementById("input-dewormed");
 const sterilizedInput = document.getElementById("input-sterilized");
-const 
+//const 
 //const tbodyEl = document.getElementById("tbody");
 const content = document.getElementById("content");
 const tableBodyEl =document.getElementById("tbody")
@@ -156,7 +156,7 @@ function renderTableData(petArr) {
             <i class="bi bi-square-fill" style="color: ${petArr[i].color}"></i>
         </td>
         <td><i class="${petArr[i].vaccinated?'bi bi-check-circle-fill':'bi bi-x-circle-fill'}"></i></td>
-        <td><i class="${petArr[i]. dewormed?'bi bi-check-circle-fill':'bi bi-x-circle-fill'}"></i></td>
+        <td><i class="${petArr[i].dewormed?'bi bi-check-circle-fill':'bi bi-x-circle-fill'}"></i></td>
         <td><i class="${petArr[i].sterilized?'bi bi-check-circle-fill':'bi bi-x-circle-fill'}"></i></td>
         ${showBMI ? `<td>${petArr[i].calculateBMI()}</td>` : `<td>?</td>`}
         <td>${new Date(petArr[i].date).toLocaleDateString()}</td>
@@ -189,6 +189,7 @@ let healthyPet = false;
     healthyPet = !healthyPet;
   console.log(healthyPet);
     if(healthyPet){
+        ``
         healthyBtn.innerText = 'Show All Pet';
         //Reset lại healthyPetArr
         healthyPetArr = [];

@@ -1,30 +1,30 @@
 "use strict";
 
-// console.log(document.querySelector('.message').textContent);
-// document.querySelector('.message').textContent = "Corect Number!";
-
+console.log(document.querySelector(".message").textContent);
+document.querySelector(".message").textContent = "Corect Number!";
+console.log(document.querySelector(".message").textContent);
+const Guess = document.querySelector(".guess");
+const Check = document.querySelector(".check");
 // console.log(document.querySelector('.guess').value);
 // document.querySelector('.guess').value = 20;
+// math.random() cho các số ngẫu nhiên từ 0 => 1
+//math.trunc() làm tròn số thập phân
 const secretnumber = Math.trunc(Math.random() * 20) + 1;
-const btnAgain = document.querySelector(".btn-again");
+console.log(secretnumber);
 let score = 20;
 let highscore = 0;
-document.querySelector(".number").textContent = secretnumber;
-const inputGuess = document.querySelector(".guess");
-const messageEl = document.querySelector(".message");
-const scoreEl = document.querySelector(".score");
-const highscoreEL = document.querySelector(".highscore");
-const numberEl = document.querySelector(".number");
+//document.querySelector('.number').textContent = secretnumber;
 // Math.trunc ==> làm tròn số
 // Math.random() số hiển thị ngẫu nhiên từ 0 -> 1.
 // ===> lưu lại và loading lại trang  để thay đổi số ngẫu nhiên.
-
 const displayMessage = function (message) {
-  messageEl.textContent = message;
+  const messages = document.querySelector(".message");
+  messages.textContent = message;
+  //document.querySelector(".message").textContent = message;
 };
-numberEl.textContent = "?";
-document.querySelector(".check").addEventListener("click", function () {
-  const guess = Number(inputGuess.value);
+
+Check.addEventListener("click", function () {
+  const guess = Number(Guess.value);
   console.log(guess, typeof guess);
   // Khi chưa điền giá trị vào ô
   if (!guess) {
@@ -32,36 +32,24 @@ document.querySelector(".check").addEventListener("click", function () {
     // Khi nhập số vào ô = vs con số bí ẩn
   } else if (guess === secretnumber) {
     displayMessage("🎉Correct Number");
-    numberEl.textContent = secretnumber;
     document.querySelector("body").style.backgroundColor = "rgb(20, 155, 20)";
-    numberEl.style.width = "10rem";
+    document.querySelector(".number").style.width = "10rem";
     if (score > highscore) {
       highscore = score;
-      highscoreEL.textContent = highscore;
+      document.querySelector(".highscore").textContent = highscore;
     }
   } else if (guess !== highscore) {
     if (score >= 1) {
       displayMessage(guess > secretnumber ? "↑ Too high!" : "↓ Too low!");
       score--;
-      scoreEl.textContent = score;
+      document.querySelector(".score").textContent = score;
     } else {
       displayMessage("🤦‍♂️ You lost the game");
-      scoreEl.textContent = 0;
+      document.querySelector(".score").textContent = 0;
     }
   }
 });
 
-btnAgain.addEventListener("click", function () {
-  score = 20;
-  const secretnumber = parseInt(Math.random() * 20) + 1;
-  numberEl.textContent = "?";
-  inputGuess.value = "";
-  messageEl.textContent = "Start Guessing...";
-  scoreEl.textContent = "20";
-  highscoreEL.textContent = "0";
-  document.querySelector("body").style.backgroundColor = "#222";
-  secretnumber.style.width = "15rem";
-});
 // }else if(guess > secretnumber){
 //     if(score >1){
 //         document.querySelector('.message').textContent = "Too high"

@@ -224,7 +224,7 @@ typeInput.addEventListener('change',renderBreed);
 function renderBreed() {
     breedInput.innerHTML = '';
   
-var breedArrType = breedArr.filter(Breed => typeInput.value == Breed.Type)
+var breedArrType = breedArr.filter(Breed => typeInput.value == Breed.Type);
 console.log(breedArrType);
 for(let i = 0; i < breedArrType.length; i++){
     const option = document.createElement('option')

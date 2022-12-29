@@ -33,19 +33,19 @@ if(isValidate) {
 });
 
 function validate() {
-    let isValidate = true;
+    let validate = true;
 
     // không bỏ trống from
     if(inputUsername.value === "") {
         alert("vui lòng nhập username!")
-        isValidate = false;
+        validate = false;
         //console.log(user.username)
     }
 
     if (inputPassword.value === ""){
         alert("Vui lòng nhập password!");
-        isValidate = false
+        validate = false
         console.log(user.password)
     }
-    return isValidate
+    return validate
 }

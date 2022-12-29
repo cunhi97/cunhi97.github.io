@@ -6,12 +6,14 @@
     const pageNum = document.getElementById("page-num");
     const btnNext = document.getElementById("btn-next");
     const newsContainer = document.getElementById("news-container");
+    console.log(currentUser.category);
+    console.log(currentUser.pageSize);
 
     //biến này để tính số News tối đa trả về API
     let totalResults = 0;
     
-    getDataNews("us","Technology", 5, 1);
-
+    getDataNews("us",currentUser.category, currentUser.pageSize, 1);
+   
     //hàm lấy dữ liệu Data news từ API và hiển thị list News ra ứng dụng
     async function getDataNews(country, category, pageSize, page) {
         
@@ -30,6 +32,7 @@
 
             //gọi hàm để hiển thị danh sách News
             displayNewList(data);
+            // lấy giá trị trong API đưa ra 1 chuỗi string  = page 
             pageNum.textContent = page;
 
         } //Bắt lỗi 
@@ -61,11 +64,12 @@ if(pageNum.textContent == 1) {
 
 
 function checkBtnNext() {
-    let pageSize = 5;
-    let pageText = Math.ceil(totalResults / pageSize);//Math. ceil() làm tròn một số đến số nguyên lớn nhất tiếp theo
+  //  let pageSize = 5;
+    let pageText = Math.ceil(totalResults / currentUser.pageSize);//Math. ceil() làm tròn một số đến số nguyên lớn nhất tiếp theo
    console.log(pageText)
    //console.log(getDataNews(pageSize))
-    // nếu page thuộc page cuối của News trong API (tổng số totalResults trong data chia(/) cho pageSize  );
+   
+   
     // Ta thực hiện ẩn nút Next 
     if(pageNum.textContent == pageText){
     // ====>>> dùng Math.ciel để làm tròn lên số trang(pageSize) khi page cuối không = pageSize 
@@ -82,12 +86,12 @@ function checkBtnNext() {
 //console.log(NumberpageNum)
 btnPrev.addEventListener('click', function() {
     // khi ckick vào Prev thì trang sẽ lùi lại 1 trang 
-    getDataNews ("us","Technology", 5, --pageNum.textContent);// nhớ truyền đủ tham số 
+    getDataNews ("us",currentUser.category, currentUser.pageSize, --pageNum.textContent);// nhớ truyền đủ tham số 
     });
 
 // Bắt sự kiện click vào nút Next 
 btnNext.addEventListener('click', function() {
-    getDataNews ("us","Technology", 5, ++pageNum.textContent);
+    getDataNews ("us",currentUser.category, currentUser.pageSize, ++pageNum.textContent);
 });
 
 

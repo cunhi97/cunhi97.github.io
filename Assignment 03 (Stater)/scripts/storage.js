@@ -14,6 +14,13 @@ function saveToStoStorage(key, value) {
 const users = getFromStorage("userArr") ? getFromStorage("userArr") : [];
 console.log(users);
 
+
+//lấy dữ liệu todoArr từ local storage
+const todos = getFromStorage("todoArr") ? getFromStorage("todoArr") : [];
+
+// chuyển về dạng class Instance
+const todoArr = todos.map((todo) => parseTask(todo));
+
 // chuyển đổi về dạng class Instance
 const userArr = users.map((user) => parseUser(user));
 console.log(userArr)
@@ -30,10 +37,22 @@ function parseUser(userData) {
         userData.firstname, 
         userData.lastname, 
         userData.username, 
-        userData.password
+        userData.password,
+        userData.pageSize,
+        userData.category
         );
 
 	return user
 }
 
+//////////////////////////////////////////////
+// hàm chuyển đổi từ js obj sag class instance của task class
+function parseTask(taskData) {
+    const task = new Task(
+        taskData.task,
+        taskData.owner,
+        taskData.isDone
+    )
+    return task
+}
 
