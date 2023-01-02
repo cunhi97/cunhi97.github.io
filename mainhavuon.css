@@ -1,0 +1,17 @@
+.penhucute {
+    color: red;
+    margin-bottom: 20px;
+}
+.img {
+    width: 40%;
+    height: 500%;
+    object-fit: cover;
+}
+.title-child{
+    font-size: 20px
+
+}
+button{
+    padding: 10px 15px;
+    background-color: red;
+}
